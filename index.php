@@ -89,6 +89,7 @@ session_start();
                 <form class="navbar-form navbar-right" action="logout.php" method="post">
                     <button type="submit" class="btn btn-success">logout</button>
                 </form>
+                <p class="navbar-text navbar-right">Logged in as: <?php echo $_SESSION['user_email']; ?> </p>
 
                 <?php
 
@@ -103,7 +104,23 @@ session_start();
                     <div class="form-group">
                         <input type="password" name="password" placeholder="Password" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-success">Sign in</button>
+                    <button type="submit"
+
+                        <?php
+
+                        if($_SESSION['locked_out'] == TRUE)
+                        {
+
+                            echo "class=\"btn btn-warning\" disabled";
+
+                        } else {
+
+                            echo "class=\"btn btn-success\"";
+                        }
+
+                        ?>
+
+                    >Sign in</button>
                 </form>
 
                 <?php
@@ -124,25 +141,64 @@ session_start();
       </div>
     </div>
 
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
+
+    <?php if($_SESSION['logged_in'] != TRUE) { ?>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
         <div class="col-md-4">
-          <h2>About</h2>
-          <p>This is for Mr. MacKenty's computer science class</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <h2>About</h2>
+            <p>This is for Mr. MacKenty's computer science class</p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
         <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis
+                euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
         </div>
-      </div>
+        <div class="col-md-4">
+            <h2>Heading</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
+                porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut
+                fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+    </div>
+
+<?php
+
+} else {
+
+        ?>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 offset-2">
+
+                <?php
+
+                $directory_to_be_scanned = "/var/www/html/bm";
+                $list_of_files = scandir($directory_to_be_scanned);
+
+                foreach ($list_of_files as $i)
+                {
+                    echo "<a href=\"$i\">$i</a> <br />";
+
+                }
+
+                ?>
+
+
+                </div>
+            </div>
+        </div>
+
+<?php
+    }
+?>
 
       <hr>
 
