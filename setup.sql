@@ -1,8 +1,7 @@
 CREATE TABLE `user` (
   `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `email` VARCHAR(255) NOT NULL,
-  `password` VARCHAR(255) NOT NULL,
-  `common_ip` INTEGER NOT NULL
+  `password` VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE `usergroup` (
@@ -23,9 +22,6 @@ CREATE TABLE `membership` (
   `user` INTEGER NOT NULL
 );
 
-CREATE INDEX `idx_userrole__user` ON `userrole` (`user`);
-
-CREATE INDEX `idx_userrole__user_group` ON `userrole` (`user_group`);
 
 ALTER TABLE `membership` ADD CONSTRAINT `fk_userrole__user` FOREIGN KEY (`user`) REFERENCES `user` (`id`);
 
