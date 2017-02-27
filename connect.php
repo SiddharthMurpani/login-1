@@ -13,7 +13,7 @@ if (mysqli_connect_errno())
 
 // Perform queries
 
-$result = mysqli_query($connect,"SELECT * FROM USERS");
+$result = mysqli_query($connect,"SELECT * FROM user");
 
 // print the output
 
@@ -28,22 +28,19 @@ echo "returned: " . mysqli_num_rows($result) . " rows from table.";
 
 echo '<hr />';
 
-$my_new_user = "joe@joe.com";
-$my_new_password = "password123";
+?>
 
-// $safe_password = password_hash($my_new_password,PASSWORD_DEFAULT);
-// $new_user = mysqli_query($connect,"INSERT INTO USERS (email, password) VALUES ('$my_new_user','$safe_password')");
+<form action="new_user.php" method="post">
 
-$submitted_password = "password123";
-$hashed_password = "$2y$10$tR1bAaofz5zKAug0YZrr.eujolzuLXK7.4RdDFgSEVTdLWNmRpr66.";
-if(password_verify($submitted_password,$hashed_password) == TRUE){
+    <input type="text" name="new_user_email" placeholder="Type new email here" />
+    <br />
+    <input type="password" name="new_user_password" placeholder="Type new password here" />
+    <br />
+    <input type="submit" value="Go! create new user" />
 
-    echo"match";
+</form>
 
-} else {
-
-    echo "no match";
-}
+<?php
 
 // close the connection
 
