@@ -9,6 +9,7 @@ $connect = mysqli_connect("localhost","bill","pa55word!","bill");
 if (mysqli_connect_errno())
 {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    die;
 }
 
 // Perform queries
@@ -18,7 +19,7 @@ $result = mysqli_query($connect,"SELECT * FROM user");
 // print the output
 
 while ($row = mysqli_fetch_array($result)) {
-    echo $row[0] . ': ' . $row[1] . ' ' . $row[2];
+    echo $row['id'] . ': ' . $row['email'] . ' ' . $row['password'];
     echo '<br />';
 }
 

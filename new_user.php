@@ -1,39 +1,42 @@
 <?php
-session_start();
 
-include('connect.php');
+// create a connection
 
-echo "hello";
-echo $connect;
+$connect = mysqli_connect("localhost","bill","pa55word!","bill");
 
+// Check connection
+
+if (mysqli_connect_errno())
+{
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    die;
+}
 
 $new_user_email = $_POST['new_user_email'];
 $new_user_password = $_POST['new_user_password'];
 
-// before we insert this user into the user table of our database, let's ensure there is not a duplicate email
+// Perform queries
+
+$result = mysqli_query($connect,"SELECT * FROM user WHERE email LIKE '$new_user_email'");
+
+if(mysqli_num_rows($result) == 0){
+
+    echo "looks like a unique email address";
+    $insert_new_user= mysqli_query($connect,"INSERT INTO user (email,password) VALUES ('$new_user_email','$new_user_password')");
 
 
-$result = mysqli_query($connect,"SELECT * FROM user");
+} else {
 
-// print the output
-
-while ($row = mysqli_fetch_array($result)) {
-   if($row['email'] == $new_user_email) {
-
-       echo "duplicate email found! ";
-   } else {
-
-       echo "unique email, we will add them to our user database.";
-
-   }
-
+    echo "looks like a duplicate email address";
+    die;
 
 }
 
+
 /**
- * cCreated by PhpStorm.
+ * Created by PhpStorm.
  * User: bmackenty
- * Date: 27/02/17
- * Time: 09:26
+ * Date: 28/02/17
+ * Time: 12:46
  */
 ?>
