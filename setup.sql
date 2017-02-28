@@ -7,7 +7,7 @@ CREATE TABLE `user` (
 CREATE TABLE `usergroup` (
   `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
-  `description` VARCHAR(255) NOT NULL
+  `description` TEXT NOT NULL
 );
 
 CREATE TABLE `userorganization` (
