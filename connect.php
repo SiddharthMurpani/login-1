@@ -10,8 +10,10 @@ $result = mysqli_query($connect,"SELECT * FROM user");
 
 // print the output
 
+// print the output
+
 while ($row = mysqli_fetch_array($result)) {
-    echo $row['id'] . ': ' . $row['email'] . ' ' . $row['password'];
+    echo $row['id'] . ': ' . $row['email'] . ' ' . $row['password'] . '  - <a href="user_edit.php?id='.$row['id'] .' ">EDIT</a>';
     echo '<br />';
 }
 
