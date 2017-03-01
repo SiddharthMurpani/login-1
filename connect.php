@@ -2,7 +2,7 @@
 
 // create a connection
 
-include('database_connection.sql');
+include('database_connect.php');
 
 // Perform queries
 
