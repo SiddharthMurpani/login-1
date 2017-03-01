@@ -1,19 +1,19 @@
 CREATE TABLE `user` (
   `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
-  `email` VARCHAR(255) NOT NULL,
-  `password` VARCHAR(255) NOT NULL
+  `email` TEXT NOT NULL,
+  `password` TEXT NOT NULL
 );
 
 CREATE TABLE `usergroup` (
   `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
+  `name` TEXT NOT NULL,
   `description` TEXT NOT NULL
 );
 
 CREATE TABLE `userorganization` (
   `id` INTEGER PRIMARY KEY AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
-  `country` VARCHAR(255) NOT NULL
+  `name` TEXT NOT NULL,
+  `country` TEXT NOT NULL
 );
 
 CREATE TABLE `membership` (
@@ -24,5 +24,4 @@ CREATE TABLE `membership` (
 
 
 ALTER TABLE `membership` ADD CONSTRAINT `fk_userrole__user` FOREIGN KEY (`user`) REFERENCES `user` (`id`);
-
 ALTER TABLE `membership` ADD CONSTRAINT `fk_userrole__user_group` FOREIGN KEY (`user_group`) REFERENCES `usergroup` (`id`);
