@@ -19,7 +19,8 @@ while ($row = mysqli_fetch_array($result)) {
 
  echo '
     <form action="update_user.php" method="post">
-    <input type="text" name="email" value="  ' . $row['email'] . ' ">
+    <p>Email: <input type="text" name="email" value="  ' . $row['email'] . ' "></p>
+    <p><input type="submit" value="click to Edit this user" /></p>
     </form>
     ';
 
