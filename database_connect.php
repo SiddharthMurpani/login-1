@@ -2,7 +2,7 @@
 
 // create a connection
 
-$connect = mysqli_connect("localhost","bill","pa55word!","bill");
+$connect = mysqli_connect("localhost","MY USER NAME","MY PASSWORD","MY DATABASE");
 
 // Check connection
 
