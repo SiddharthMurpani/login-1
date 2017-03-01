@@ -91,7 +91,7 @@ session_start();
 
                 <?php
 
-                $directory_to_be_scanned = "/var/www/html/bm";
+                $directory_to_be_scanned = "/var/www/html/YOUR DIRECTORY";
                 $list_of_files = scandir($directory_to_be_scanned);
 
                 foreach ($list_of_files as $i)
